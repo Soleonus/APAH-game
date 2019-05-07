@@ -447,8 +447,13 @@ function GenAnswers(piece1, piece2, qType, simDif) {
 	}
 
 	if (corAns.length > 1) {
-		for (let i=0; i<4; i++) {
-			ans[i] = random(answers);
+		let i = 0;
+		while (i < 4) {
+			let iAns = random(answers);
+			if (!corAns.includes(iAns)) {
+				ans[i] = iAns;
+				i++
+			}
 		}
 		rightAns = corAns[Math.floor(random(1, corAns.length-0.1))];
 		ans[Math.floor(random(3.9))] = rightAns;
